@@ -2,11 +2,11 @@ package com.spring.annotations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+
+
 @Component
-@Scope("prototype")
 public class TennisCoach implements Coach {
     @Autowired
     @Qualifier("randomFortuneService")
@@ -42,4 +42,17 @@ public class TennisCoach implements Coach {
     public String getDailyFortune(){
         return  fortuneService.getFortune();
     }
+    // define my init method
+    //@PostConstruct
+    public  void  doMyStartupStuff(){
+        System.out.println("TennisCoach: inside of init method");
+    }
+
+    // define my destroy method
+    //@PreDestory
+    public  void  doMyCleanupStuff(){
+        System.out.println("TennisCoach: inside of destroy method");
+    }
+
+
 }
